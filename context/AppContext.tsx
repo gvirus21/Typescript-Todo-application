@@ -40,9 +40,11 @@ export const todoReducer = (
     return state;
     };
 
-const [todos, dispatch] = useReducer(todoReducer, initialState);
+    
+    const TodoContextProvider = ({ children }: TodoContextProviderProps) => {
 
-const TodoContextProvider = ({ children }: TodoContextProviderProps) => {
+  const [todos, dispatch] = useReducer(todoReducer, initialState);
+
   const saveTodo = (todo: ITodo) => {
     dispatch({ type: "Save", payload: todo });
   };

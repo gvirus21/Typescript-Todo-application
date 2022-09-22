@@ -4,8 +4,19 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Input from '../components/Input'
 import Card from '../components/Card'
+import { useState, useContext } from 'react'
+import { TodoContext } from '../context/AppContext'
+import CardContainer from '../components/CardContainer'
+import { ITodo, TodoContextInterface } from '../utils/interfaces'
 
 const Home: NextPage = () => {
+
+  const {
+    todos,
+    saveTodo,
+    removeTodo
+} : TodoContextInterface = useContext<TodoContextInterface>(TodoContext)
+
   return (
     <div className="h-screen w-screen bg-gray-400">
       <Head>
@@ -15,8 +26,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex flex-col justify-center items-center w-screen">
-        <Input />
-        <Card />
+        <Input saveTodo={saveTodo} todos={todos}/>
+        <CardContainer todos={todos}/>
       </main>
 
     </div>

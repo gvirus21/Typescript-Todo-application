@@ -1,17 +1,20 @@
-// import Card from "./Card"
-// import { FC, useContext } from "react"
-// import AppContext from "../context/AppContext"
+import Card from "./Card"
+import { FC, useContext } from "react"
+import AppContext from "../context/AppContext"
+import { ITodo } from "../utils/interfaces"
 
-// const {task} = useContext(AppContext)
 
-// const CardContainer: FC = () => {
-//   return (
-//     <div className="">
-//         data.map(({task: string}) => {
-//             <Card task={task} />
-//         })
-//     </div>
-//   )
-// }
+const CardContainer = ({todos}:{todos: ITodo[]}) => {
 
-// export default CardContainer
+  return (
+    <div className="mt-20">
+        {todos.map((todo) => {
+            return(
+                <Card key={todo.id} todo={todo}/>
+            )
+        })}
+    </div>
+  )
+}
+
+export default CardContainer
